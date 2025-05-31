@@ -11,9 +11,9 @@ type Colors = Record<string, ColorPalette>;
 
 const colors: Colors = {
     primary: {
-        main: '#508D4E',
+        main: '#1F6B38',
         light: '#D6EFD8',
-        dark: '#386A36',
+        dark: '#144B26',
     },
     secondary: {
         main: '#6B7280',
