@@ -10,13 +10,12 @@ export default function RootLayout() {
   }}>
 
     <Stack.Screen
-      name="index"
+      name="(tabs)"
       options={{
-        title: "",
-        headerTintColor: "#000",
+        headerShown: false,
       }}
     />
-  
+
 
   </Stack>;
 }
