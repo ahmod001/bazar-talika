@@ -3,18 +3,18 @@ import colors from './theme/colors';
 
 module.exports = {
   // NOTE: Update this to include the paths to all of your component files.
-  content: ["./App.tsx", "./components/**/*.{js,jsx,ts,tsx}"],
+  content: ["./app/**/*.{js,jsx,ts,tsx}", "./components/**/*.{js,jsx,ts,tsx}"],
   presets: [require("nativewind/preset")],
   theme: {
     extend: {
       colors: {
         primary: {
-          default: colors.primary.main,
+          DEFAULT: colors.primary.main,
           light: colors.primary.light,
           dark: colors.primary.dark,
         },
         secondary: {
-          default: colors.secondary.main,
+          DEFAULT: colors.secondary.main,
           light: colors.secondary.light,
           dark: colors.secondary.dark,
         },
