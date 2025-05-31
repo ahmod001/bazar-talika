@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "bajar-talika",
+    "name": "বাজার তালিকা - Shopping list",
     "slug": "bajar-talika",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "bajartalika",
+    "scheme": "bajar-talika",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
