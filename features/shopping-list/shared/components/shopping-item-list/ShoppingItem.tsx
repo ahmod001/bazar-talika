@@ -1,21 +1,26 @@
 import { View, Text } from 'react-native'
 import React from 'react'
-import { Checkbox } from 'react-native-paper'
+import BouncyCheckbox from "react-native-bouncy-checkbox";
+import colors from '@/theme/colors';
 
 const ShoppingItem = () => {
     const [checked, setChecked] = React.useState(true);
     return (
-        <View className='border-2 border-gray-200 rounded-2xl p-4 flex flex-row items-center justify-between '
-            onTouchEnd={() => setChecked(!checked)}>
-            <View className='flex flex-row items-center gap-2'>
-                <View className='scale-110'>
-                    <Checkbox status={checked ? "checked" : "unchecked"} />
-                </View>
+        <View className='border-2 border-gray-200 rounded-2xl py-5 px-4 flex flex-row items-center justify-between'
+            onTouchStart={() => setChecked(!checked)}>
+                
+            <BouncyCheckbox
+                size={32}
+                style={{ gap: 8, alignItems: "center", }}
+                isChecked={checked}
+                fillColor={colors.primary.main}
+                 useBuiltInState={false}
+                unFillColor="#FFFFFF"
+                innerIconStyle={{ borderWidth: 2, borderColor: '#e5e7eb' }}
+                textComponent={
+                    <Name>পেয়াজ</Name>}
+            />
 
-                <Name>
-                    পেয়াজ
-                </Name>
-            </View>
 
             <View>
                 <Amount>
