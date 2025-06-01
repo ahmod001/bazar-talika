@@ -1,6 +1,4 @@
-import React from 'react'
-import ShoppingItem from './ShoppingItem'
-
+import ShoppingItem from './ShoppingItem/ShoppingItem'
 const ShoppingItemList = () => {
     return (
         <ShoppingItem />
