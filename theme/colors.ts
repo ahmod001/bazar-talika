@@ -17,7 +17,7 @@ const colors: Colors = {
     },
     secondary: {
         main: '#6B7280',
-        light: '#F9FAFB',
+        light: '#f9fafb',
         dark: '#1F2937',
     },
 }

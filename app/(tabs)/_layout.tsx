@@ -6,14 +6,14 @@ import React from 'react'
 
 const Layout = () => {
     return (
-        <Tabs screenOptions={{ tabBarStyle: { display: 'none' }, title: 'বাজার তালিকা', headerTintColor: colors.secondary.dark, headerStyle: { height: 100 } }} >
+        <Tabs screenOptions={{ tabBarStyle: { display: 'none' }, title: 'বাজার তালিকা', headerTintColor: colors.secondary.dark, headerStyle: { elevation: 0, backgroundColor: colors.secondary.light } }}  >
 
-            <Tabs.Screen name="index" options={{ headerLeft: logo, headerRight: () => (<PopupMenu />) }} />
+            <Tabs.Screen name="index" options={{ headerLeft: logo, headerRight: () => (<PopupMenu className="me-2.5" />) }} />
 
         </Tabs>
     )
 }
 
-const logo = () => (<Logo className='w-11 h-11 ms-2 me-0.5' fullIcon={false} />)
+const logo = () => (<Logo className='w-11 h-11 ms-3 me-1' fullIcon={false} />)
 
 export default Layout;
