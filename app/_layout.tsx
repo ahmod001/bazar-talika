@@ -1,21 +1,29 @@
 import { Stack } from "expo-router";
 import "../global.css";
+import SafeArea from "@/services/SafeArea";
+import PaperKit from "@/services/PaperKit";
 
 export default function RootLayout() {
-  return <Stack screenOptions={{
-    headerStyle: { backgroundColor: "transparent" },
-    animation: "fade_from_bottom",
-    animationDuration: 300,
-    headerShadowVisible: false,
-  }}>
+  return (
+    <PaperKit>
+      <SafeArea>
+        <Stack
+          screenOptions={{
+            headerStyle: { backgroundColor: "transparent" },
+            animation: "fade_from_bottom",
+            animationDuration: 300,
+            headerShadowVisible: false,
+          }}
+        >
+          <Stack.Screen
+            name="(tabs)"
+            options={{
+              headerShown: false,
+            }}
+          />
 
-    <Stack.Screen
-      name="(tabs)"
-      options={{
-        headerShown: false,
-      }}
-    />
-
-
-  </Stack>;
+        </Stack>
+      </SafeArea >
+    </PaperKit>
+  );
 }
