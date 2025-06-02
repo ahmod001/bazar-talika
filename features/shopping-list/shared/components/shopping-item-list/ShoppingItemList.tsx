@@ -1,7 +1,11 @@
-import ShoppingItem from './ShoppingItem/ShoppingItem'
+import { View } from 'react-native'
+import ShoppingItem from './Shopping-item/ShoppingItem'
+
 const ShoppingItemList = () => {
     return (
-        <ShoppingItem />
+        <View>
+            <ShoppingItem title='আলু' amount="১০ কেজি" isCompleted={false} />
+        </View>
     )
 }
 

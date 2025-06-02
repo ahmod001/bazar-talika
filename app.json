@@ -4,7 +4,7 @@
     "slug": "bajar-talika",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/logo/logo.jpg",
+    "icon": "./assets/images/logo/logo.png",
     "scheme": "bajar-talika",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
@@ -13,7 +13,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/logo/logo.jpg",
+        "foregroundImage": "./assets/images/logo/logo.png",
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true
@@ -21,19 +21,20 @@
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/images/logo/logo.jpg"
+      "favicon": "./assets/images/logo/logo.png"
     },
     "plugins": [
       "expo-router",
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/logo/logo.jpg",
+          "image": "./assets/images/logo/logo.png",
           "imageWidth": 200,
           "resizeMode": "cover",
           "backgroundColor": "#ffffff"
         }
-      ]
+      ],
+      "expo-audio"
     ],
     "experiments": {
       "typedRoutes": true

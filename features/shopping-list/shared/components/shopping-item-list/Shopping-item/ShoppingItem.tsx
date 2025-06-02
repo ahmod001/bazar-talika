@@ -1,8 +1,10 @@
 import colors from '@/theme/colors';
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 import BouncyCheckbox, { BouncyCheckboxHandle } from 'react-native-bouncy-checkbox';
 import { IconButton } from 'react-native-paper';
+import useCompletedSound from './hooks/useCompletedSound';
+import useChecked from './hooks/useChecked';
 
 interface Props {
     title: string;
@@ -10,20 +12,31 @@ interface Props {
     isCompleted?: boolean;
 }
 
-const Item = ({ title, amount, isCompleted = false }: Props) => {
-    const [checked, setChecked] = useState<boolean>(isCompleted);
+const ShoppingItem = ({ title, amount, isCompleted = false }: Props) => {
+    const { checked, toggleCheck } = useChecked(isCompleted)
+
     const checkboxRef = useRef<BouncyCheckboxHandle>(null);
 
-    const handleToggle = () => {
-        setChecked(prev => !prev);
-        checkboxRef.current?.onCheckboxPress();
+    const { play } = useCompletedSound()
+
+    const handleCheckbox = () => {
+        toggleCheck();
+        triggerCheckBoxAnimation()
+
+        if (!checked) {
+            play();
+        }
     };
+
+    const triggerCheckBoxAnimation = () => {
+        checkboxRef.current?.onCheckboxPress()
+    }
 
     return (
         <TouchableOpacity
             activeOpacity={0.9}
-            onPress={handleToggle}
-            className="border-2 border-gray-200 rounded-2xl py-5 px-4 flex flex-row items-center justify-between flex-grow"
+            onPress={handleCheckbox}
+            className={`border-2 border-gray-200 rounded-2xl py-5 px-4 flex flex-row items-center justify-between flex-grow transition-colors duration-100 ${checked && 'bg-primary-light/50'}`}
         >
             <View className="flex flex-row items-center gap-3">
                 <CheckBox isChecked={checked} ref={checkboxRef} />
@@ -35,19 +48,10 @@ const Item = ({ title, amount, isCompleted = false }: Props) => {
             <IconButton
                 icon="delete"
                 size={25}
-                onPress={() => console.log('Add Item')}
-                style={{ alignSelf: 'flex-end',  }} 
-                />
+                onPress={() => null}
+                style={{ alignSelf: 'flex-end', }}
+            />
 
-            {/* <View className="flex flex-row items-center gap-2">
-                <Amount>{amount}</Amount>
-                <IconButton
-                    icon="delete"
-                    size={25}
-                    onPress={() => console.log('Delete Item')}
-                    style={{ alignSelf: 'center' }}
-                />
-            </View> */}
         </TouchableOpacity>
     );
 };
@@ -83,4 +87,4 @@ const Amount = ({ children }: { children: React.ReactNode }) => (
     </Text>
 );
 
-export default Item;
+export default ShoppingItem;
