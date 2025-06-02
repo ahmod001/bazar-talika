@@ -5,6 +5,7 @@ import BouncyCheckbox, { BouncyCheckboxHandle } from 'react-native-bouncy-checkb
 import { IconButton } from 'react-native-paper';
 import useCompletedSound from './hooks/useCompletedSound';
 import useChecked from './hooks/useChecked';
+import Delete from './delete/Delete';
 
 interface Props {
     title: string;
@@ -45,13 +46,7 @@ const ShoppingItem = ({ title, amount, isCompleted = false }: Props) => {
 
             <Amount>{amount}</Amount>
 
-            <IconButton
-                icon="delete"
-                size={25}
-                onPress={() => null}
-                style={{ alignSelf: 'flex-end', }}
-            />
-
+            <Delete />
         </TouchableOpacity>
     );
 };

@@ -1,11 +1,9 @@
 
-import ShoppingItemList from "@/features/shopping-list/shared/components/shopping-item-list/ShoppingItemList";
-import { View } from "react-native";
+import RegularShoppingList from "@/features/shopping-list/regular-shopping-list/RegularShoppingList";
+
 
 export default function Index() {
   return (
-    <View className="container bg-secondary-light h-full">
-      <ShoppingItemList />
-    </View>
+    <RegularShoppingList />
   );
 }
