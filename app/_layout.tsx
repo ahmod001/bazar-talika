@@ -2,8 +2,11 @@ import { Stack } from "expo-router";
 import "../global.css";
 import SafeArea from "@/services/SafeArea";
 import PaperKit from "@/services/PaperKit";
+import useInitDB from "@/hooks/useInitDB";
 
 export default function RootLayout() {
+  useInitDB();
+  
   return (
     <PaperKit>
       <SafeArea>
