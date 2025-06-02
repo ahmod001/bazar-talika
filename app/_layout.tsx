@@ -6,27 +6,34 @@ import useInitDB from "@/hooks/useInitDB";
 
 export default function RootLayout() {
   useInitDB();
-  
+
   return (
     <PaperKit>
       <SafeArea>
-        <Stack
-          screenOptions={{
-            headerStyle: { backgroundColor: "transparent" },
-            animation: "fade_from_bottom",
-            animationDuration: 300,
-            headerShadowVisible: false,
-          }}
-        >
-          <Stack.Screen
-            name="(tabs)"
-            options={{
-              headerShown: false,
-            }}
-          />
-
-        </Stack>
+        <Router />
       </SafeArea >
     </PaperKit>
   );
 }
+
+
+const Router = () => (
+  <Stack
+    screenOptions={{
+      headerStyle: { backgroundColor: "transparent" },
+      animation: "fade_from_bottom",
+      animationDuration: 300,
+      headerShadowVisible: false,
+    }}
+  >
+    <Stack.Screen
+      name="(tabs)"
+      options={{
+        headerShown: false,
+      }}
+    />
+
+  </Stack>
+)
+
+RootLayout.displayName = 'Router';
