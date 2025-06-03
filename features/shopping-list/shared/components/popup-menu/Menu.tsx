@@ -15,7 +15,7 @@ const PopupMenu = ({ ...props }) => {
                 visible={visible}
                 onDismiss={closeMenu}
                 anchor={<TriggerButton onPress={openMenu} />}>
-                <Menu.Item onPress={() => { }} title="সব মুছে ফেলুন" leadingIcon={'delete'} />
+                <Menu.Item onPress={() => {  }} title="সব মুছে ফেলুন" leadingIcon={'delete'} />
                 <Divider />
                 <Menu.Item onPress={() => { }} title="শেয়ার করুন" leadingIcon={'share-variant'} />
 

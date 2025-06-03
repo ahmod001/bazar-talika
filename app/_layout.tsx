@@ -2,7 +2,7 @@ import { Stack } from "expo-router";
 import "../global.css";
 import SafeArea from "@/services/SafeArea";
 import PaperKit from "@/services/PaperKit";
-import useInitDB from "@/hooks/useInitDB";
+import useInitDB from "@/hooks/useDB";
 
 export default function RootLayout() {
   useInitDB();
@@ -15,7 +15,6 @@ export default function RootLayout() {
     </PaperKit>
   );
 }
-
 
 const Router = () => (
   <Stack
@@ -35,5 +34,4 @@ const Router = () => (
 
   </Stack>
 )
-
 RootLayout.displayName = 'Router';

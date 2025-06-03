@@ -73,6 +73,18 @@ const destroy = async (id: number) => {
 
 
 /**
+ * @function destroyAll deletes all record from the table
+ * 
+ * @param id 
+ */
+
+const destroyAll = async () => {
+    const db = await openDB();
+    await db.runAsync(`DELETE FROM regular_shopping_items `)
+}
+
+
+/**
  * @function find returns a single record by ID
  * 
  * @param id 
@@ -95,6 +107,7 @@ const RegularShoppingItem = {
     create,
     update,
     destroy,
+    destroyAll
 };
 
 export default RegularShoppingItem;

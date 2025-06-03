@@ -1,14 +1,18 @@
 import { initDB } from '@/db/init';
+import seedDB from '@/db/seeder';
 import { useEffect } from 'react';
 
-const useInitDB = () => {
+const useDB = (seed = false) => {
     useEffect(() => {
         (async () => {
             await initDB();
+
+            if (seed) seedDB();
+
         })();
     }, []);
 
-    return { status: true };
+    return true;
 };
 
-export default useInitDB;
+export default useDB;

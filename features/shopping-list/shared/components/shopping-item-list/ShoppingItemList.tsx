@@ -3,18 +3,24 @@ import { FlatList, View } from 'react-native';
 import ShoppingItem from './Shopping-item/ShoppingItem';
 
 
-
-interface _ShoppingItem {
+interface ShoppingItemType {
     title: string;
     amount: string;
-    isCompleted: boolean;
+    is_completed: boolean;
     [key: string]: any
 }
 
-const ShoppingItemList = ({ data }: { data: _ShoppingItem[] }) => {
 
-    const renderItem = useCallback(({ item }: { item: _ShoppingItem }) => (
+interface Props {
+    data: ShoppingItemType[],
+
+}
+
+const ShoppingItemList = ({ data}: Props) => {
+
+    const renderItem = useCallback(({ item }: { item: ShoppingItemType }) => (
         <ShoppingItem
+            isCompleted={item.is_complete}
             {...item}
         />
     ), []);
