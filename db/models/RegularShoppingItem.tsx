@@ -1,5 +1,5 @@
 import openDB from "..";
-import { RegularShoppingItem as RegularShoppingItemType } from "./types";
+import { type RegularShoppingItemInput } from "./types";
 
 /**
  * @function all
@@ -21,7 +21,7 @@ const all = async () => {
 const create = async ({
     description = null,
     ...data
-}: RegularShoppingItemType) => {
+}: RegularShoppingItemInput) => {
     const db = await openDB();
     const result = await db.runAsync(
         `INSERT INTO regular_shopping_items (title, amount, is_completed, description) VALUES (?, ?, ?, ?)`,
@@ -40,7 +40,7 @@ const create = async ({
  */
 const update = async (
     id: number,
-    data: RegularShoppingItemType
+    data: RegularShoppingItemInput
 ) => {
     const db = await openDB();
 

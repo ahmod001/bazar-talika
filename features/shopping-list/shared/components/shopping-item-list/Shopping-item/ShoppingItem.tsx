@@ -1,32 +1,43 @@
 import colors from '@/theme/colors';
-import React, { useRef } from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import React, { ReactNode, useRef } from 'react';
+import { Text, TouchableOpacity, View,} from 'react-native';
 import BouncyCheckbox, { BouncyCheckboxHandle } from 'react-native-bouncy-checkbox';
-import { IconButton } from 'react-native-paper';
 import useCompletedSound from './hooks/useCompletedSound';
 import useChecked from './hooks/useChecked';
-import Delete from './delete/Delete';
+import Action from './action/Action';
 
-interface Props {
+interface Data {
+    id: number,
     title: string;
     amount: string;
-    isCompleted?: boolean;
+    is_completed: boolean;
 }
 
-const ShoppingItem = ({ title, amount, isCompleted = false }: Props) => {
-    const { checked, toggleCheck } = useChecked(isCompleted)
+interface Props {
+    // onToggleCompleted: (data: Data) => Promise<boolean>
+    onToggleCompleted: (data: Data) => boolean
+    data: Data,
+    children: ReactNode
+}
+
+const ShoppingItem = ({ data, onToggleCompleted, children }: Props) => {
+    const { checked, toggleCheck } = useChecked(data.is_completed)
 
     const checkboxRef = useRef<BouncyCheckboxHandle>(null);
 
     const { play } = useCompletedSound()
 
-    const handleCheckbox = () => {
+    const handleCheckbox = async () => {
         toggleCheck();
         triggerCheckBoxAnimation()
 
         if (!checked) {
             play();
         }
+
+        const isUpdated = await onToggleCompleted(data)
+
+        if (!isUpdated) toggleCheck();
     };
 
     const triggerCheckBoxAnimation = () => {
@@ -41,12 +52,12 @@ const ShoppingItem = ({ title, amount, isCompleted = false }: Props) => {
         >
             <View className="flex flex-row items-center gap-3">
                 <CheckBox isChecked={checked} ref={checkboxRef} />
-                <Name>{title}</Name>
+                <Name>{data.title}</Name>
             </View>
 
-            <Amount>{amount}</Amount>
+            <Amount>{data.amount}</Amount>
 
-            <Delete />
+            {children}
         </TouchableOpacity>
     );
 };
@@ -76,10 +87,21 @@ const Name = ({ children }: { children: React.ReactNode }) => (
     </Text>
 );
 
+ShoppingItem.displayName = 'Name'
+
+
 const Amount = ({ children }: { children: React.ReactNode }) => (
     <Text numberOfLines={1} style={{ fontSize: 17 }} className="font-semibold text-secondary">
         {children}
     </Text>
 );
+
+ShoppingItem.displayName = 'Amount'
+
+
+
+
+ShoppingItem.Action = Action;
+
 
 export default ShoppingItem;

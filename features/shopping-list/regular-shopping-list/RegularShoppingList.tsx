@@ -1,27 +1,34 @@
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { View } from "react-native";
-import ShoppingItemList from "../shared/components/shopping-item-list/ShoppingItemList";
+import ShoppingItemList, { ItemComponent } from "../shared/components/shopping-item-list/ShoppingItemList";
 import useFetch from "./hooks/useFetch";
-
-// const _data = [
-//   { id: 1, title: 'আলু', amount: '১০ কেজি', is_completed: false },
-//   { id: 2, title: 'তেল', amount: '১ লিটার', is_completed: false },
-//   { id: 3, title: 'পেঁয়াজ', amount: '৫ কেজি', is_completed: true },
-//   { id: 4, title: 'চাল', amount: '২০ কেজি', is_completed: false },
-
-// ];
+import { useRegularShoppingItemStore } from "@/services/zustand/stores/regular-shopping-item-store";
+import useDelete from "./hooks/useDelete";
+import Item from "./components/Item";
 
 export default function RegularShoppingList() {
+
+  const { isReloadRegularShoppingList } = useRegularShoppingItemStore(state => state)
 
   const { fetch, data, isLoading } = useFetch()
 
   useEffect(() => {
     fetch()
+  }, [isReloadRegularShoppingList])
+
+
+  const itemComponent: ItemComponent = useCallback(({ item }) => {
+    return <Item {...item} />
   }, [])
+
 
   return (
     <View className="container bg-secondary-light h-full pt-4">
-      <ShoppingItemList data={data} />
+      <ShoppingItemList data={data} reRender={isReloadRegularShoppingList} itemComponent={itemComponent} />
     </View>
   );
 }
+
+
+
+
