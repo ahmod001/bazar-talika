@@ -2,16 +2,17 @@ import { Stack } from "expo-router";
 import "../global.css";
 import SafeArea from "@/services/SafeArea";
 import PaperKit from "@/services/PaperKit";
-import useInitDB from "@/hooks/useDB";
+import SqliteProvider from "@/services/expo-sqlite/SqliteProvider";
 
 export default function RootLayout() {
-  useInitDB();
 
   return (
     <PaperKit>
-      <SafeArea>
-        <Router />
-      </SafeArea >
+      <SqliteProvider>
+        <SafeArea>
+          <Router />
+        </SafeArea >
+      </SqliteProvider>
     </PaperKit>
   );
 }

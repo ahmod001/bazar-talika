@@ -3,7 +3,6 @@ import { View } from "react-native";
 import ShoppingItemList, { ItemComponent } from "../shared/components/shopping-item-list/ShoppingItemList";
 import useFetch from "./hooks/useFetch";
 import { useRegularShoppingItemStore } from "@/services/zustand/stores/regular-shopping-item-store";
-import useDelete from "./hooks/useDelete";
 import Item from "./components/Item";
 
 export default function RegularShoppingList() {

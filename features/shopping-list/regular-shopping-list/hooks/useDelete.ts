@@ -1,12 +1,14 @@
-import RegularShoppingItem from '@/db/models/RegularShoppingItem';
+import useRegularShoppingItemDB from "@/services/expo-sqlite/hooks/useRegularShoppingItemDB";
 
 interface Props { id: number, onError?: VoidFunction, onSuccess?: VoidFunction }
 
 const useDelete = ({ id, onError, onSuccess }: Props) => {
 
+    const { destroy } = useRegularShoppingItemDB()
+
     const _delete = async () => {
         try {
-            await RegularShoppingItem.destroy(id)
+            await destroy(id)
             onSuccess && onSuccess()
 
             return true
@@ -17,7 +19,6 @@ const useDelete = ({ id, onError, onSuccess }: Props) => {
             return false
         }
     }
-
 
     return { _delete }
 };

@@ -15,13 +15,13 @@ const Delete = ({ id, onDelete }: Props) => {
 
     const onConfirm = () => {
         const fn = async () => {
-            const isDeleted = await onDelete(id);
+            const isDeleted = await onDelete(id)
 
             if (isDeleted) {
                 hideDialog()
             }
         }
-
+        
         startTransition(fn)
     }
 
