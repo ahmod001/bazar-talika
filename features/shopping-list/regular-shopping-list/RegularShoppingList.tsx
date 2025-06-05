@@ -10,7 +10,7 @@ export default function RegularShoppingList() {
 
   const { isReloadRegularShoppingList } = useRegularShoppingItemStore(state => state)
 
-  const { fetch, data } = useFetch()
+  const { fetch, data, isLoading } = useFetch()
 
   useEffect(() => {
     fetch()
@@ -24,7 +24,7 @@ export default function RegularShoppingList() {
 
   return (
     <View className="container bg-secondary-light h-full pt-4">
-      <ShoppingItemList data={data} reRender={isReloadRegularShoppingList} itemComponent={itemComponent} />
+      <ShoppingItemList data={data} reRender={isReloadRegularShoppingList} itemComponent={itemComponent} loading={isLoading}/>
     </View>
   );
 }

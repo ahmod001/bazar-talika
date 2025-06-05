@@ -4,9 +4,13 @@ import ShoppingItem from './Shopping-item/ShoppingItem';
 import EmptyList from './EmptyList';
 import { ShoppingItemListProps } from './types';
 import Gap from './Gap';
+import LoadingScreen from '@/components/LoadingScreen';
 
+const ShoppingItemList = ({ reRender, data, itemComponent, loading }: ShoppingItemListProps) => {
 
-const ShoppingItemList = ({ reRender, data, itemComponent }: ShoppingItemListProps) => {
+    if (loading)
+        return <LoadingScreen />
+
     if (data.length < 1)
         return (<EmptyList />)
 
@@ -22,7 +26,7 @@ const ShoppingItemList = ({ reRender, data, itemComponent }: ShoppingItemListPro
             keyExtractor={(item) => item.id.toString()}
         />
     );
-};
+}
 
 ShoppingItemList.Item = ShoppingItem;
 

@@ -1,6 +1,6 @@
 import colors from '@/theme/colors';
 import React, { ReactNode, useRef } from 'react';
-import { Text, TouchableOpacity, View,} from 'react-native';
+import { Text, TouchableOpacity, View, } from 'react-native';
 import BouncyCheckbox, { BouncyCheckboxHandle } from 'react-native-bouncy-checkbox';
 import useCompletedSound from './hooks/useCompletedSound';
 import useChecked from './hooks/useChecked';
@@ -14,8 +14,7 @@ interface Data {
 }
 
 interface Props {
-    // onToggleCompleted: (data: Data) => Promise<boolean>
-    onToggleCompleted: (data: Data) => boolean
+    onToggleCompleted: (data: Data) => Promise<boolean>
     data: Data,
     children: ReactNode
 }
@@ -35,7 +34,7 @@ const ShoppingItem = ({ data, onToggleCompleted, children }: Props) => {
             play();
         }
 
-        const isUpdated = await onToggleCompleted(data)
+        const isUpdated = await onToggleCompleted({ ...data, is_completed: !checked })
 
         if (!isUpdated) toggleCheck();
     };

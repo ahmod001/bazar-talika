@@ -16,6 +16,7 @@ const useFetch = () => {
             try {
                 const data = await all()
                 setData(data as _RegularShoppingItem[])
+
             } catch (error) {
                 console.error('regular-shopping-list', error)
                 setError(error)

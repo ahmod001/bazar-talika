@@ -12,6 +12,7 @@ interface ShoppingItemType {
 
 interface ShoppingItemListProps {
     reRender?: boolean;
+    loading?: boolean;
     data: ShoppingItemType[];
     itemComponent: ItemComponent;
 }
