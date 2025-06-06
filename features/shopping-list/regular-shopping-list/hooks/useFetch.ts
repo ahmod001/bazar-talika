@@ -3,7 +3,7 @@ import { type RegularShoppingItem as _RegularShoppingItem } from '@/services/exp
 import { useState, useTransition, } from 'react';
 
 const useFetch = () => {
-    const { all } = useRegularShoppingItemDB()
+    const { all, create } = useRegularShoppingItemDB()
 
     const [isPending, startTransition] = useTransition()
     const [data, setData] = useState<_RegularShoppingItem[]>([])
@@ -15,7 +15,7 @@ const useFetch = () => {
             try {
                 const data = await all()
                 setData(data as _RegularShoppingItem[])
-
+                // seed(create)
             } catch (error) {
                 console.error('regular-shopping-list', error)
                 setError(error)
@@ -26,7 +26,6 @@ const useFetch = () => {
     }
 
 
-
     return {
         fetch,
         data,
@@ -34,5 +33,19 @@ const useFetch = () => {
         error
     }
 };
+
+
+const seed = (fn) => {
+    console.log('running...');
+
+    for (let index = 0; index < 5; index++) {
+        fn({
+            title: 'test',
+            amount: '1kg',
+            is_completed: false
+        })
+
+    }
+}
 
 export default useFetch;

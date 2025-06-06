@@ -10,7 +10,7 @@ const ShoppingItemList = ({ reRender, data, itemComponent, loading }: ShoppingIt
     // if (loading)
     //     return <LoadingScreen />
 
-    if (!loading && data.length === 1)
+    if (!loading && data.length < 1)
         return (<EmptyList />)
 
     return (

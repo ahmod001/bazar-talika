@@ -14,6 +14,7 @@ const Delete = ({ id, onDelete }: Props) => {
     const [isPending, startTransition] = useTransition()
 
     const onConfirm = () => {
+
         const fn = async () => {
             const isDeleted = await onDelete(id)
 
@@ -21,7 +22,7 @@ const Delete = ({ id, onDelete }: Props) => {
                 hideDialog()
             }
         }
-        
+
         startTransition(fn)
     }
 
