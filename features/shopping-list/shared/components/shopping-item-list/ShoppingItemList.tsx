@@ -4,14 +4,13 @@ import ShoppingItem from './Shopping-item/ShoppingItem';
 import EmptyList from './EmptyList';
 import { ShoppingItemListProps } from './types';
 import Gap from './Gap';
-import LoadingScreen from '@/components/LoadingScreen';
 
 const ShoppingItemList = ({ reRender, data, itemComponent, loading }: ShoppingItemListProps) => {
 
-    if (loading)
-        return <LoadingScreen />
+    // if (loading)
+    //     return <LoadingScreen />
 
-    if (data.length < 1)
+    if (!loading && data.length === 1)
         return (<EmptyList />)
 
     return (

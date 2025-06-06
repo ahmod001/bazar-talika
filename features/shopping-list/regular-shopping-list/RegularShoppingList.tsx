@@ -17,6 +17,7 @@ export default function RegularShoppingList() {
   }, [isReloadRegularShoppingList])
 
 
+
   const itemComponent: ItemComponent = useCallback(({ item }) => {
     return <Item {...item} />
   }, [])
@@ -24,7 +25,7 @@ export default function RegularShoppingList() {
 
   return (
     <View className="container bg-secondary-light h-full pt-4">
-      <ShoppingItemList data={data} reRender={isReloadRegularShoppingList} itemComponent={itemComponent} loading={isLoading}/>
+      <ShoppingItemList data={data} reRender={isReloadRegularShoppingList} itemComponent={itemComponent} loading={isLoading} />
     </View>
   );
 }

@@ -10,7 +10,6 @@ const useFetch = () => {
     const [error, setError] = useState<unknown | null>(null)
 
 
-
     const fetch = () => {
         const fn = async () => {
             try {
@@ -25,6 +24,7 @@ const useFetch = () => {
 
         startTransition(fn)
     }
+
 
 
     return {
