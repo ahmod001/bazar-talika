@@ -2,7 +2,7 @@ import colors from '@/theme/colors'
 import React from 'react'
 import { AnimatedFAB } from 'react-native-paper'
 
-const DialogTrigger = ({ onPress }: { onPress?: VoidFunction }) => {
+const CreateBtn = ({ onPress }: { onPress?: VoidFunction }) => {
     return (
         <AnimatedFAB
             icon={'plus'}
@@ -20,4 +20,4 @@ const DialogTrigger = ({ onPress }: { onPress?: VoidFunction }) => {
     )
 }
 
-export default DialogTrigger
+export default CreateBtn

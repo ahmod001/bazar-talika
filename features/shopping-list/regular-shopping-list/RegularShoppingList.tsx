@@ -5,7 +5,7 @@ import useFetch from "./hooks/useFetch";
 import { useRegularShoppingItemStore } from "@/services/zustand/stores/regular-shopping-item-store";
 import Item from "./components/Item";
 import { ItemComponent } from "../shared/components/shopping-item-list/types";
-import AddShoppingItem from "../shared/components/add-shopping-item/AddShoppingItem";
+import CreateShoppingItem from "../shared/components/create-shopping-item/CreateShoppingItem";
 
 export default function RegularShoppingList() {
 
@@ -29,7 +29,7 @@ export default function RegularShoppingList() {
       <ShoppingItemList data={data} reRender={isReloadRegularShoppingList} itemComponent={itemComponent} loading={isLoading} />
 
 
-      <AddShoppingItem />
+      <CreateShoppingItem />
     </View>
   );
 }
