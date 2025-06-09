@@ -15,7 +15,6 @@ const CreateShoppingItem = () => {
                 form={{
                     title: 'পন্য যুক্ত করুন',
                     onSubmit: (data) => console.log(data),
-                    actionType: 'create'
                 }} />
         </>
     )

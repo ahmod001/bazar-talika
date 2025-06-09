@@ -1,25 +1,15 @@
-import colors from '@/theme/colors';
 import * as React from 'react';
-import { Button, Dialog, Portal } from 'react-native-paper';
+import { Dialog, Portal } from 'react-native-paper';
 import Cancel from './actions/Cancel';
 import Submit from './actions/Submit';
 import Form from './Form';
+import FormProvider from './providers/FormProvider';
+import { ShoppingItemFormDialogProps } from './types';
+import useFormProvider from './hooks/useFormProvider';
 
-interface Form {
-    title: string,
-    onSubmit: (data: Object) => void
-    actionType?: 'create' | 'update'
-}
 
-interface Props { visible: boolean; onDismiss: VoidFunction, form: Form, showLoading?: boolean }
-
-const ShoppingItemFormDialog = ({ form, visible, onDismiss, showLoading }: Props) => {
-
-    const handleSubmit = () => {
-        form.onSubmit({
-            /* any data */
-        })
-    }
+const ShoppingItemFormDialog_ = ({ form, visible, onDismiss, showLoading }: ShoppingItemFormDialogProps) => {
+    const { handleSubmit } = useFormProvider()
 
     return (
         <Portal>
@@ -33,13 +23,19 @@ const ShoppingItemFormDialog = ({ form, visible, onDismiss, showLoading }: Props
 
                 <Dialog.Actions >
                     <Cancel onPress={onDismiss} />
-                    <Submit onPress={handleSubmit} loading={showLoading} />
+                    <Submit onPress={handleSubmit(form.onSubmit)} loading={showLoading} />
                 </Dialog.Actions>
             </Dialog>
         </Portal>
     );
 };
 
+const Wrapper = (props: ShoppingItemFormDialogProps) => (
+    <FormProvider defaultValues={props.form?.defaultValue}>
+        <ShoppingItemFormDialog_ {...props} />
+    </FormProvider>
+)
 
+const ShoppingItemFormDialog = Wrapper
 
 export default ShoppingItemFormDialog;

@@ -1,22 +1,13 @@
 import React from 'react'
 import { View } from 'react-native'
 import TextField from '../form/TextField'
-import * as yup from 'yup'
-import { Controller, useForm, } from 'react-hook-form'
-import { yupResolver } from '@hookform/resolvers/yup';
 import ReactHookFormController from '@/services/react-hook-form/components/ReactHookFormController'
+import useFormProvider from './hooks/useFormProvider'
 
-const schema = yup.object({
-    title: yup.string().required('পন্যের নাম দিতে হবে'),
-    amount: yup.string().required('পন্যের পরিমান দিতে হবে')
-})
 
 const Form = () => {
-    const { control, handleSubmit } = useForm({
-        mode: 'onBlur',
-        defaultValues: { title: '', amount: '' },
-        resolver: yupResolver(schema)
-    })
+    const { control } = useFormProvider()
+    
     return (
         <View className='gap-y-1'>
             <ReactHookFormController
