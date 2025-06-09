@@ -3,6 +3,7 @@ import * as React from 'react';
 import { Button, Dialog, Portal } from 'react-native-paper';
 import Cancel from './actions/Cancel';
 import Submit from './actions/Submit';
+import Form from './Form';
 
 interface Form {
     title: string,
@@ -27,7 +28,7 @@ const ShoppingItemFormDialog = ({ form, visible, onDismiss, showLoading }: Props
                     {form.title}
                 </Dialog.Title>
                 <Dialog.Content style={{ marginTop: 20 }}>
-                    {''}
+                    <Form />
                 </Dialog.Content>
 
                 <Dialog.Actions >
