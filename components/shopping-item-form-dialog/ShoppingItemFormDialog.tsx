@@ -20,6 +20,7 @@ const ShoppingItemFormDialog_ = ({ form, visible, onDismiss, showLoading }: Shop
             <Dialog.Title>
                 {form.title}
             </Dialog.Title>
+            
             <Dialog.Content style={{ marginTop: 20 }}>
                 <Form />
             </Dialog.Content>

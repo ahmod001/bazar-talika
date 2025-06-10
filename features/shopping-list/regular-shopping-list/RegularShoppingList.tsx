@@ -6,12 +6,14 @@ import { useRegularShoppingItemStore } from "@/services/zustand/stores/regular-s
 import Item from "./components/Item";
 import { ItemComponent } from "../shared/components/shopping-item-list/types";
 import CreateShoppingItem from "../shared/components/create-shopping-item/CreateShoppingItem";
+import useCreate from "./hooks/useCreate";
 
 export default function RegularShoppingList() {
 
   const { isReloadRegularShoppingList } = useRegularShoppingItemStore(state => state)
 
   const { fetch, data, isLoading } = useFetch()
+  const { create } = useCreate()
 
   useEffect(() => {
     fetch()
@@ -29,7 +31,7 @@ export default function RegularShoppingList() {
       <ShoppingItemList data={data} reRender={isReloadRegularShoppingList} itemComponent={itemComponent} loading={isLoading} />
 
 
-      <CreateShoppingItem />
+      <CreateShoppingItem onCreate={create}/>
     </View>
   );
 }
