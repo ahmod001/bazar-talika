@@ -9,33 +9,38 @@ import useFormProvider from './hooks/useFormProvider';
 
 
 const ShoppingItemFormDialog_ = ({ form, visible, onDismiss, showLoading }: ShoppingItemFormDialogProps) => {
-    const { handleSubmit } = useFormProvider()
+    const { handleSubmit ,reset} = useFormProvider()
+
+    React.useEffect(()=>{
+        reset()
+    },[visible])
 
     return (
-        <Portal>
-            <Dialog visible={visible} onDismiss={onDismiss} >
-                <Dialog.Title>
-                    {form.title}
-                </Dialog.Title>
-                <Dialog.Content style={{ marginTop: 20 }}>
-                    <Form />
-                </Dialog.Content>
+        <Dialog visible={visible} onDismiss={onDismiss} >
+            <Dialog.Title>
+                {form.title}
+            </Dialog.Title>
+            <Dialog.Content style={{ marginTop: 20 }}>
+                <Form />
+            </Dialog.Content>
 
-                <Dialog.Actions >
-                    <Cancel onPress={onDismiss} />
-                    <Submit onPress={handleSubmit(form.onSubmit)} loading={showLoading} />
-                </Dialog.Actions>
-            </Dialog>
-        </Portal>
+            <Dialog.Actions >
+                <Cancel onPress={onDismiss} />
+                <Submit onPress={handleSubmit(form.onSubmit)} loading={showLoading} />
+            </Dialog.Actions>
+        </Dialog>
     );
 };
 
 const Wrapper = (props: ShoppingItemFormDialogProps) => (
-    <FormProvider defaultValues={props.form?.defaultValue}>
-        <ShoppingItemFormDialog_ {...props} />
-    </FormProvider>
+    <Portal>
+        <FormProvider defaultValues={props.form?.defaultValue}>
+            <ShoppingItemFormDialog_ {...props} />
+        </FormProvider>
+    </Portal>
 )
 
 const ShoppingItemFormDialog = Wrapper
+
 
 export default ShoppingItemFormDialog;

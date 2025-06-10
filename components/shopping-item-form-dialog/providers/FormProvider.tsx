@@ -1,9 +1,8 @@
-
 import React, { createContext } from 'react'
 import useShopItemForm, { FormValues } from '../hooks/useShopItemForm'
 import { UseFormReturn } from 'react-hook-form'
 
-export const FormContext = createContext<UseFormReturn<any> | undefined>(undefined)
+export const FormContext = createContext<UseFormReturn<any> | null>(null)
 
 const FormProvider = ({ defaultValues, children }: { defaultValues?: FormValues, children: React.ReactNode }) => {
     const form = useShopItemForm(defaultValues)

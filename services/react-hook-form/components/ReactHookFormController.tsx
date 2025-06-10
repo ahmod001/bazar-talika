@@ -10,19 +10,21 @@ interface Props {
 }
 
 const ReactHookFormController = ({ children, name, control }: Props) => {
+
     return (
         <Controller
             control={control}
             name={name}
-            render={({ field, formState: { errors } }) => (
+            render={({ field: { onChange, onBlur, value }, formState: { errors } }) => (
                 React.cloneElement(children, {
-                    ...field,
-                    error: errors?.[name]?.message
+                    value,
+                    onBlur,
+                    onChangeText: onChange,  
+                    error: errors?.[name]?.message,
                 })
-
-            )
-            }
+            )}
         />
+
     )
 }
 

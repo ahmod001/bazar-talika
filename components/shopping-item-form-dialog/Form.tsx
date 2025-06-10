@@ -6,8 +6,11 @@ import useFormProvider from './hooks/useFormProvider'
 
 
 const Form = () => {
-    const { control } = useFormProvider()
+    const { control, watch } = useFormProvider()
     
+    console.log(watch());
+    
+
     return (
         <View className='gap-y-1'>
             <ReactHookFormController

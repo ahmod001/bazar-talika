@@ -11,9 +11,9 @@ interface DefaultFormValues { title: string, amount: string }
 
 const useShopItemForm = (defaultValues?: DefaultFormValues) => {
     const form = useForm({
-        mode: 'onBlur',
+        mode: 'onSubmit',
         defaultValues: defaultValues,
-        resolver: yupResolver(schema)
+        resolver: yupResolver(schema),
     })
 
     return form;
