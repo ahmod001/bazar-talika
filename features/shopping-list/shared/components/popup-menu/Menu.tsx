@@ -1,12 +1,14 @@
 import * as React from 'react';
-import { Menu, Divider, IconButton } from 'react-native-paper';
+import { Menu, IconButton } from 'react-native-paper';
 import useMenu from './useMenu';
 import colors from '@/theme/colors';
 import { Entypo } from '@expo/vector-icons';
 import { View } from 'react-native';
+import DeleteAll from './menu-items/DeleteAll';
+import Share from './menu-items/Share';
 
 
-const PopupMenu = ({ ...props }) => {
+const PopupMenu = ({ children, ...props }: { children: React.ReactNode, [key: string]: any }) => {
     const { visible, openMenu, closeMenu } = useMenu();
 
     return (
@@ -15,10 +17,7 @@ const PopupMenu = ({ ...props }) => {
                 visible={visible}
                 onDismiss={closeMenu}
                 anchor={<TriggerButton onPress={openMenu} />}>
-                <Menu.Item onPress={() => {  }} title="সব মুছে ফেলুন" leadingIcon={'delete'} />
-                <Divider />
-                <Menu.Item onPress={() => { }} title="শেয়ার করুন" leadingIcon={'share-variant'} />
-
+                {children}
             </Menu>
         </View>
     );
@@ -35,5 +34,9 @@ const TriggerButton = ({ onPress }: { onPress: VoidFunction }) => (
         style={{ backgroundColor: colors.primary.light }}
     />
 )
+
+
+PopupMenu.items = { DeleteAll: DeleteAll, Share: Share }
+
 
 export default PopupMenu;

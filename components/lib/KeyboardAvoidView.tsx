@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
 
 });
 
-const getBehavior = ()=>Platform.OS === 'ios' ? 'padding' : 'height';
+const getBehavior = () => Platform.OS === 'ios' ? 'padding' : 'height';
 
 
 export default KeyboardAvoidingView;
