@@ -8,10 +8,11 @@ import {
 
 
 const KeyboardAvoidingView = ({ children }: { children: React.ReactNode }) => {
+
     return (
         <KeyboardAvoid
-            behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={styles.container}>
-                {children}
+            behavior={getBehavior()} style={styles.container}>
+            {children}
         </KeyboardAvoid>
     );
 };
@@ -22,5 +23,8 @@ const styles = StyleSheet.create({
     },
 
 });
+
+const getBehavior = ()=>Platform.OS === 'ios' ? 'padding' : 'height';
+
 
 export default KeyboardAvoidingView;
