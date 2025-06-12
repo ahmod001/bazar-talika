@@ -6,21 +6,22 @@ import Form from './Form';
 import FormProvider from './providers/FormProvider';
 import { ShoppingItemFormDialogProps } from './types';
 import useFormProvider from './hooks/useFormProvider';
+import KeyboardAvoidingView from '../lib/KeyboardAvoidView';
 
 
 const ShoppingItemFormDialog_ = ({ form, visible, onDismiss, showLoading }: ShoppingItemFormDialogProps) => {
-    const { handleSubmit ,reset} = useFormProvider()
+    const { handleSubmit, reset } = useFormProvider()
 
-    React.useEffect(()=>{
+    React.useEffect(() => {
         reset()
-    },[visible])
+    }, [visible])
 
     return (
         <Dialog visible={visible} onDismiss={onDismiss} >
             <Dialog.Title>
                 {form.title}
             </Dialog.Title>
-            
+
             <Dialog.Content style={{ marginTop: 20 }}>
                 <Form />
             </Dialog.Content>
@@ -36,7 +37,9 @@ const ShoppingItemFormDialog_ = ({ form, visible, onDismiss, showLoading }: Shop
 const Wrapper = (props: ShoppingItemFormDialogProps) => (
     <Portal>
         <FormProvider defaultValues={props.form?.defaultValue}>
-            <ShoppingItemFormDialog_ {...props} />
+            <KeyboardAvoidingView>
+                <ShoppingItemFormDialog_ {...props} />
+            </KeyboardAvoidingView>
         </FormProvider>
     </Portal>
 )

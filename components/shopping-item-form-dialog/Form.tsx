@@ -6,9 +6,7 @@ import useFormProvider from './hooks/useFormProvider'
 
 
 const Form = () => {
-    const { control, watch } = useFormProvider()
-    
-    console.log(watch());
+    const { control } = useFormProvider()
     
 
     return (
