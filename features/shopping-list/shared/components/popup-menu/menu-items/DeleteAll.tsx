@@ -14,26 +14,28 @@ const DeleteAll = ({ onDelete, closeMenu }: { onDelete: () => Promise<boolean>, 
             const isDeleted = await onDelete()
 
             if (isDeleted) {
-                hideDialog()
+                onDismiss()
             }
         }
 
         startTransition(fn)
     }
 
-    const onMenuItemPress = () => {
-        // closeMenu()
+    const onDismiss = () => {
+        hideDialog();
 
-        InteractionManager.runAfterInteractions(() => {
-            showDialog();
-        });
+        setTimeout(() => {
+            InteractionManager.runAfterInteractions(() => {
+                closeMenu()
+            });
+        }, 200);
 
     }
 
     return (
         <>
-            <Menu.Item onPress={onMenuItemPress} title="সব মুছে ফেলুন" leadingIcon={'delete'} />
-            <DeleteConfirmationDialog visible={visible} showLoading={isPending} onDismiss={hideDialog} onConfirm={onConfirm} />
+            <Menu.Item onPress={showDialog} title="সব মুছে ফেলুন" leadingIcon={'delete'} />
+            <DeleteConfirmationDialog visible={visible} showLoading={isPending} onDismiss={onDismiss} onConfirm={onConfirm} />
         </>
     );
 };
