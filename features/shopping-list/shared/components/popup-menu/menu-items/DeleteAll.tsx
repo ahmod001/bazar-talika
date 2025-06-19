@@ -1,9 +1,10 @@
 import DeleteConfirmationDialog from '@/components/delete-confirmation-dialog/DeleteConfirmationDialog';
 import useDialog from '@/components/delete-confirmation-dialog/useDialog';
 import React, { useTransition } from 'react';
+import { InteractionManager } from 'react-native';
 import { Menu } from 'react-native-paper';
 
-const DeleteAll = ({ onDelete, closeMenu }: { onDelete: () => boolean, [key: string]: any }) => {
+const DeleteAll = ({ onDelete, closeMenu }: { onDelete: () => Promise<boolean>, [key: string]: any }) => {
     const { visible, hideDialog, showDialog } = useDialog()
     const [isPending, startTransition] = useTransition()
 
@@ -21,9 +22,11 @@ const DeleteAll = ({ onDelete, closeMenu }: { onDelete: () => boolean, [key: str
     }
 
     const onMenuItemPress = () => {
+        // closeMenu()
 
-        showDialog()
-        closeMenu()
+        InteractionManager.runAfterInteractions(() => {
+            showDialog();
+        });
 
     }
 

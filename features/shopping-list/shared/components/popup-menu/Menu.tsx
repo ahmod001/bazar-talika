@@ -11,6 +11,7 @@ import usePassPropsIntoReactChildren from '@/hooks/usePassPropsIntoReactChildren
 const PopupMenu = ({ children, ...props }: { children: React.ReactNode, [key: string]: any }) => {
     const { visible, openMenu, closeMenu } = useMenu();
     const { getMutatedChildren } = usePassPropsIntoReactChildren(children)
+
     return (
         <View {...props}>
             <Menu
