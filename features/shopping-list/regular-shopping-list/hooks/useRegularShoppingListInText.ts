@@ -1,16 +1,24 @@
-import { useEffect } from "react"
+import useRegularShoppingItemDB from "@/services/expo-sqlite/hooks/useRegularShoppingItemDB"
 import useFetch from "./useFetch"
 import { shoppingListInTextFormatted } from "@/utils/shoppingListInTextFormatted"
 
 const useRegularShoppingListInText = () => {
-    const { fetch, data } = useFetch()
 
-    useEffect(() => {
-        fetch()
-    }, [])
+    const { all } = useRegularShoppingItemDB();
 
-    const txt = () => {
-        return shoppingListInTextFormatted(data, 'বাজার তালিকা')
+    const fetchRegularShoppingItems = async () => {
+        try {
+            const data = await all()
+            return data;
+        } catch (error) {
+            console.error('regular-shopping-list', error)
+            return [];
+        }
+    }
+
+    const txt = async () => {
+        const data = await fetchRegularShoppingItems()
+        return shoppingListInTextFormatted(data as any, 'বাজার তালিকা')
     }
 
     return { txt }

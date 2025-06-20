@@ -7,7 +7,7 @@ import useFormProvider from './hooks/useFormProvider'
 
 const Form = () => {
     const { control } = useFormProvider()
-    
+
 
     return (
         <View className='gap-y-1'>
@@ -15,6 +15,7 @@ const Form = () => {
                 control={control}
                 name="title">
                 <TextField
+                    autoFocus
                     label="পণ্যের নাম"
                     placeholder="যেমনঃ আলু"
                 />

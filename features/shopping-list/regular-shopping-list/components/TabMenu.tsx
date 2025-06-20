@@ -15,8 +15,8 @@ const TabMenu = ({ ...props }: { [key: string]: any }) => {
     })
 
 
-    const onShare = () => {
-        const text = txt()
+    const onShare = async () => {
+        const text = await txt()
         share(text)
     }
 

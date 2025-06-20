@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { Dialog, Portal } from 'react-native-paper';
+import KeyboardAvoidingView from '../lib/KeyboardAvoidView';
 import Cancel from './actions/Cancel';
 import Submit from './actions/Submit';
 import Form from './Form';
+import useFormProvider from './hooks/useFormProvider';
 import FormProvider from './providers/FormProvider';
 import { ShoppingItemFormDialogProps } from './types';
-import useFormProvider from './hooks/useFormProvider';
-import KeyboardAvoidingView from '../lib/KeyboardAvoidView';
 
 
 const ShoppingItemFormDialog_ = ({ form, visible, onDismiss, showLoading }: ShoppingItemFormDialogProps) => {
