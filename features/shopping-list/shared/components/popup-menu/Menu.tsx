@@ -6,6 +6,7 @@ import DeleteAll from './menu-items/DeleteAll';
 import Share from './menu-items/Share';
 import TriggerMenu from './TriggerMenu';
 import usePassPropsIntoReactChildren from '@/hooks/usePassPropsIntoReactChildren';
+import PrivacyPolicy from './menu-items/others/PrivacyPolicy';
 
 
 const PopupMenu = ({ children, ...props }: { children: React.ReactNode, [key: string]: any }) => {
@@ -28,7 +29,7 @@ const PopupMenu = ({ children, ...props }: { children: React.ReactNode, [key: st
 
 
 
-PopupMenu.items = { DeleteAll: DeleteAll, Share: Share }
+PopupMenu.items = { DeleteAll: DeleteAll, Share: Share, PrivacyPolicy: PrivacyPolicy }
 
 
 export default PopupMenu;

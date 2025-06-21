@@ -24,14 +24,18 @@ const Router = () => (
       animation: "fade_from_bottom",
       animationDuration: 300,
       headerShadowVisible: false,
+      headerShown: false
     }}
   >
     <Stack.Screen
       name="(tabs)"
-      options={{
-        headerShown: false,
-      }}
+
     />
+    <Stack.Screen
+      name="(others)"
+
+    />
+
 
   </Stack>
 )
