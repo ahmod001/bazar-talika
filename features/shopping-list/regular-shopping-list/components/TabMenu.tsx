@@ -24,7 +24,7 @@ const TabMenu = ({ ...props }: { [key: string]: any }) => {
         <PopupMenu {...props} >
             <PopupMenu.items.DeleteAll onDelete={_delete} />
             <PopupMenu.items.Share onShare={onShare} />
-            <PopupMenu.items.PrivacyPolicy />
+            <PopupMenu.items.Settings />
         </PopupMenu>
     )
 }
