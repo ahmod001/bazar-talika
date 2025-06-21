@@ -6,7 +6,7 @@ import React from 'react'
 
 const Layout = () => {
     return (
-        <Tabs screenOptions={{ tabBarStyle: { display: 'none' }, title: 'বাজার তালিকা', headerTintColor: colors.secondary.dark, headerStyle: { elevation: 0, backgroundColor: colors.secondary.light } }}  >
+        <Tabs screenOptions={{ tabBarStyle: { display: 'none' }, title: 'বাজার তালিকা', headerTintColor: colors.secondary.dark, headerStyle: { elevation: 0, backgroundColor: colors.secondary.light, }}}  >
 
             <Tabs.Screen name="index" options={{ headerLeft: logo, headerRight: () => (<TabMenu className="me-2.5" />) }} />
 
